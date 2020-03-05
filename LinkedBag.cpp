@@ -211,7 +211,7 @@ ItemType LinkedBag<ItemType>::removeRandom()
 	  for (int i = 0; i < rand_num; i++){
 	  	if (i==0){}
 			else{
-	      rand_num = rand_num->getNext();
+	      first_node = first_node->getNext();
 	      if (i == itemCount - 1){
 	        break;
 	      }
