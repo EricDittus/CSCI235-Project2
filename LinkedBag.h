@@ -28,7 +28,7 @@ public:
    void deleteSecondNode(); //Question 1
    bool add(const ItemType& newEntry); //Question 2
    int getCurrentSize() const; //Question 3A
-   int getCurrentSizeRecursive() const; //Question 3B
+   int getCurrentSizeRecursive(); //Question 3B
    LinkedBag(ItemType entryArr[], int count); //Question 4
    ItemType removeRandom(); //Question 5
    bool isEmpty() const;
