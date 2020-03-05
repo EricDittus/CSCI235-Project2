@@ -148,7 +148,7 @@ int LinkedBag<ItemType>::getCurrentSize() const
 //                B. Recursively
 //***********************************************//
 template<class ItemType>
-int LinkedBag<ItemType>::getCurrentSizeRecursive(ItemType* headPtr) const
+int LinkedBag<ItemType>::getCurrentSizeRecursive() const
 {
 	//This identifies the base case
   if (headPtr == nullptr){
