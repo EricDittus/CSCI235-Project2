@@ -104,13 +104,18 @@ bool LinkedBag<ItemType>::add(const ItemType& newEntry)
 
 	Node<ItemType>* entry_ptr = new Node<ItemType>(newEntry); // dynamically allocate memory for the new entry
 	Node<ItemType>* temp_ptr = headPtr; // points to what head ptr points to
-
-	while (temp_ptr != nullptr) { //while the pointer is not null keep going down the chain
-		temp_ptr = temp_ptr->getNext();
-	}
-
+	//while the pointer is not null keep going down the chain
+	if (headPtr == nullptr) {
+    headPtr = entry_ptr;
+    itemCount++;
+    return true;
+   }
+	 while (temp_ptr->getNext() != nullptr) {
+      temp_ptr = temp_ptr -> getNext();
+   }
 	temp_ptr->setNext(entry_ptr); // set the next node to the node that we want
-	return ((temp_ptr->getItem()) == newEntry); // if it worked return true
+	itemCount++;
+	return true; // if it worked return true
 }  // end add
 
 //***********************************************//
@@ -150,11 +155,12 @@ int LinkedBag<ItemType>::getCurrentSize() const
 template<class ItemType>
 int LinkedBag<ItemType>::getCurrentSizeRecursive()
 {
+	static Node<ItemType> *thisPtr = headPtr;
 	//This identifies the base case
-  if (headPtr == nullptr){
+  if (thisPtr == nullptr){
 		return 0;
   }else{
-    headPtr = headPtr->getNext();
+    thisPtr = thisPtr->getNext();
 		//This allows the function to be Recursive
 		//by calling itself
     return 1 + getCurrentSizeRecursive();
