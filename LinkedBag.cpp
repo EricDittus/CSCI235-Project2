@@ -7,7 +7,8 @@
 #include "LinkedBag.h"
 #include "Node.h"
 #include <cstddef>
-
+#include <iostream>
+#include <stdlib.h>
 template<class ItemType>
 LinkedBag<ItemType>::LinkedBag() : headPtr(nullptr), itemCount(0)
 {
@@ -102,7 +103,7 @@ bool LinkedBag<ItemType>::add(const ItemType& newEntry)
 {
 
 	Node<ItemType>* entry_ptr = new Node<ItemType>(newEntry); // dynamically allocate memory for the new entry
-	Node<ItemType>* temp_ptr = head_ptr_; // points to what head ptr points to
+	Node<ItemType>* temp_ptr = headPtr; // points to what head ptr points to
 
 	while (temp_ptr != nullptr) { //while the pointer is not null keep going down the chain
 		temp_ptr = temp_ptr->getNext();
@@ -223,7 +224,7 @@ ItemType LinkedBag<ItemType>::removeRandom()
 	  deletingNode = first_node;
 	  freshNode->setNext(nullptr);
 	  delete deletingNode;
-	  nodeToDelete = nullptr;
+	  deletingNode = nullptr;
 	  itemCount --;
 	  return random_remove_bag;
 	}
